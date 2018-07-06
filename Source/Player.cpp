@@ -77,23 +77,23 @@ void Player::move()
 //	detectCollisions();
 
 	// Start a move animation from current starting point
-	QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
-	animation->setStartValue(QPointF(pos().x(), pos().y()));
+	this->moveAnimation = new QPropertyAnimation(this, "pos");
+	this->moveAnimation->setStartValue(QPointF(pos().x(), pos().y()));
 
 	// To a random point within the scene/screen
 	float targetX = qrand() % int(scene()->width() - this->boundingRect().width());
 	float targetY = qrand() % int(scene()->height() - this->boundingRect().height());
 	QPointF endPos(targetX, targetY);
-	animation->setEndValue(endPos);
+	this->moveAnimation->setEndValue(endPos);
 
 	// The duration is proportional to the max distance possible
 	double distance = std::hypot(targetX - pos().x(), targetY - pos().y());
 	double screenDiagonal = std::hypot(scene()->width(), scene()->height());
 	int duration = distance / screenDiagonal * 1500.0;
-	animation->setDuration(duration);
+	this->moveAnimation->setDuration(duration);
 
 	// Start the animation
-	animation->start();
+	this->moveAnimation->start();
 
 	// Schedule the next movement
 	this->timer->start(duration + monsterDelay);
@@ -107,13 +107,14 @@ void Player::detectCollisions()
 	for ( QGraphicsItem* item : items )
 	{
 		// If a graphic item is an obstacle remove it from scene
-		if ( Obstacle* obstacle = dynamic_cast<Obstacle*>(item) )
+		if ( /*Obstacle* obstacle =*/ dynamic_cast<Obstacle*>(item) )
 		{
 			// Play the collision sound
 			this->collisionSound->play();
 
-			//obstacle->setOpacity(0.0);
-			scene()->removeItem(obstacle);
+			// Stop current move animation and move in another direction
+			this->moveAnimation->stop();
+			this->move();
 		}
 	}
 }

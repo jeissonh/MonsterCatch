@@ -3,6 +3,7 @@
 
 #include "AnimatedObject.h"
 
+class QPropertyAnimation;
 class QSoundEffect;
 
 /**
@@ -18,7 +19,9 @@ class Player : public AnimatedObject
 
   protected:
 	/// To generate sounds when the player is activated
-	QSoundEffect* collisionSound;
+	QSoundEffect* collisionSound = nullptr;
+	/// Animates the monster moving around the screen
+	QPropertyAnimation* moveAnimation = nullptr;
 
   public:
 	/// Constructor
