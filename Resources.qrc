@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/assets.svg</file>
+        <file>Resources/FunkGameLoop32m.mp3</file>
+		<file>Resources/Stop.wav</file>
+    </qresource>
+</RCC>
