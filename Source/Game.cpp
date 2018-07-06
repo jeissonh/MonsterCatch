@@ -39,7 +39,7 @@ int Game::run()
 
 	// Set a black color background or add an image as a background
 	this->view->setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
-//	scene->addItem( new QGraphicsPixmapItem(QPixmap(":/Resources/Background.png")) );
+//	scene->addItem( new QGraphicsPixmapItem(QPixmap(":/Background.png")) );
 
 	// The scene has infinite size, but we want it has the same size than the view
 	// This stops the weird behavior of the autoscroll feature of the view being smaller than the
@@ -56,7 +56,7 @@ int Game::run()
 	this->scene->addItem(this->score);
 
 	// Load the graphic resources
-	this->svgRenderer = new QSvgRenderer(QString("://Resources/assets.svg"), this);
+	this->svgRenderer = new QSvgRenderer(QString("://assets.svg"), this);
 
 	// Create the player control
 	this->player = new Player();
@@ -81,7 +81,7 @@ void Game::playBackgroundMusic(const QString& audioFilename)
 {
 	// We add the sound to a playlist
 	QMediaPlaylist* playlist = new QMediaPlaylist();
-	playlist->addMedia(QUrl("qrc:/Resources/" + audioFilename));
+	playlist->addMedia(QUrl("qrc:/" + audioFilename));
 
 	// We add the playlist to a media player object
 	QMediaPlayer* mediaPlayer = new QMediaPlayer(this);

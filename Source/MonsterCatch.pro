@@ -19,7 +19,7 @@ SOURCES += \
 	Score.cpp \
 	Obstacle.cpp
 
-RESOURCES += Resources.qrc
+RESOURCES += ../Resources/Resources.qrc
 
 mac {
 	Resources.files = Resources

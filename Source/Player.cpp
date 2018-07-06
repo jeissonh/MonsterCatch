@@ -19,7 +19,7 @@ Player::Player()
 
 	// Pre-load the collision sound
 	collisionSound = new QSoundEffect(qApp);
-	collisionSound->setSource(QUrl("qrc:/Resources/Stop.wav"));
+	collisionSound->setSource(QUrl("qrc:/Stop.wav"));
 	collisionSound->setVolume(0.98f);
 
 	// Randomly move this item periodically
