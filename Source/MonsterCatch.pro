@@ -20,9 +20,3 @@ SOURCES += \
 	Obstacle.cpp
 
 RESOURCES += ../Resources/Resources.qrc
-
-mac {
-	Resources.files = Resources
-	Resources.path = Contents/MacOS
-	QMAKE_BUNDLE_DATA += Resources
-}
